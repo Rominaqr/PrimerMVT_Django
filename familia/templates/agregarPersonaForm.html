@@ -1,0 +1,20 @@
+<!--En cualquier plantilla que use un formulario POST, use la etiqueta csrf_token dentro del elemento <form>
+ si el formulario es para una URL interna-->
+ <h1>Agregar persona</h1>
+ <div>
+ <form action="/familia/agregar/" method="post">
+    {% csrf_token %} 
+    {% for field in form %}
+    <p>
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        <!--{{ field.label_tag }} -->
+        <label for="{{ field.id_for_label }}" style="font-weight:bold">{{ field.label }}</label>
+        {{ field }}
+    </div>
+    {% endfor %}
+    <p>
+    <input type="submit">
+   </form>
+ <button onclick="location.href = '/familia/'">Regresar</button>
+</div>
